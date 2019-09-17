@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Seguridad\Usuario;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class UsuarioAdministradorSeeder extends Seeder
 {
@@ -12,16 +12,12 @@ class UsuarioAdministradorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('usuario')->insert([
+        $usuario = Usuario::create([
             'usuario' => 'admin',
-            'nombre' => 'administrador',
-            'password' => bcrypt('pass123')
+            'nombre' => 'Administrador',
+            'email' => 'rgt90@hotmail.com',
+            'password' => 'pass123'
         ]);
-
-        DB::table('usuario_rol')->insert([
-            'rol_id' => 1,
-            'usuario_id' => 1,
-            'estado' => 1
-        ]);
+        $usuario->roles()->sync(1);
     }
 }
