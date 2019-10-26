@@ -116,15 +116,11 @@
                 <!-- Menu Body -->
                 <li class="user-body">
                 <div class="row">
-                    <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    @if(session()->get("roles") && count(session()->get("roles")) > 1)
+                    <div class="col-xs-12 text-center">
+                        <a href="#" class="cambiar-rol btn btn-default btn-block">Cambiar Rol</a>
                     </div>
-                    <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
-                    </div>
+                    @endif
                 </div>
                 </li>
                 <!-- Menu Footer-->
@@ -133,7 +129,7 @@
                     <a href="{{route('login')}}" class="btn btn-default btn-flat">Login</a>
                 </div>
                 <div class="pull-right">
-                <a href="{{route('logout')}}" class="btn btn-default btn-flat">Cerrar Sesiónt</a>
+                    <a href="{{route('logout')}}" class="btn btn-default btn-flat">Cerrar Sesiónt</a>
                 </div>
                 </li>
             </ul>
